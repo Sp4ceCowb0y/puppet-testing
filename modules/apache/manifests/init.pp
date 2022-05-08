@@ -18,6 +18,7 @@ class apache (
   }
 
   service { 'apache':
+    name      => 'apache2',
     ensure    => running,
     enable    => true,
     subscribe => [File['ports.conf'],File['000-default.conf']],
