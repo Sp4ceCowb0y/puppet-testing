@@ -20,11 +20,19 @@ class apache::params {
         $provider = 'chocolatey'
         $service_name = 'Apache HTTP Server'
         $ports_path = 'C:/Users/%Username%/AppData/Roaming/Apache24/conf/httpd.conf'
-        $ports_template = 'apache/httpd.conf.erb'
+        $ports_template = 'apache/win_httpd.conf.erb'
         $virtualhost_path = 'C:/Users/%Username%/AppData/Roaming/Apache24/conf/httpd.conf'
-        $virtualhost_template = 'apache/httpd.conf.erb'
+        $virtualhost_template = 'apache/win_httpd.conf.erb'
     }
     'osx': {
+        $version = '2.4.*'
+        $package_name = 'httpd'
+        $provider = 'homebrew'
+        $service_name = 'httpd'
+        $ports_path = '$(brew --prefix)/etc/httpd/httpd.conf' #/usr/local/etc/httpd/httpd.conf
+        $ports_template = 'apache/mac_httpd.conf.erb'
+        $virtualhost_path = '$(brew --prefix)/etc/httpd/httpd.conf' #/usr/local/etc/httpd/httpd.conf
+        $virtualhost_template = 'apache/mac_httpd.conf.erb'
 
     }
     default: {
