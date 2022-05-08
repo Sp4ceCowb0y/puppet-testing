@@ -3,7 +3,7 @@ class apache::params {
   $listen_port = '80'
   $virtualhost_port = '80'
 
-  case $::osfamily {
+  case $facts['os']['family'] {
     'Debian': {
         $version = '2.4.*'
         $package_name = 'apache2'
