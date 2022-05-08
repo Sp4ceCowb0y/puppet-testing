@@ -7,7 +7,9 @@ class apache (
   $provider = $apache::params::provider,
   $service_name = $apache::params::service_name,
   $ports_path = $apache::params::ports_path,
+  $ports_template = $apache::params::ports_template,
   $virtualhost_path = $apache::params::virtualhost_path,
+  $virtualhost_template = $apache::params::ports_template,
 
 ) inherits apache::params
 {
@@ -19,8 +21,8 @@ class apache (
   }
 
   service { 'apache':
-    name      => $service_name,
     ensure    => running,
+    name      => $service_name,
     enable    => true,
     subscribe => [File['ports.conf'],File['000-default.conf']],
   }
@@ -28,14 +30,14 @@ class apache (
   file { 'ports.conf':
     ensure  => 'file',
     path    => $ports_path,
-    content => template ('apache/ports.conf.erb'),
+    content => template ('$ports_template'),
     require => Package['apache'],
   }
 
   file { '000-default.conf':
     ensure  => 'file',
     path    => $virtualhost_path,
-    content => template ('apache/000-default.conf.erb'),
+    content => template ('$virtualhost_template'),
     require => Package['apache'],
   }
 

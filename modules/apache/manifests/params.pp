@@ -10,10 +10,19 @@ class apache::params {
         $provider = 'apt'
         $service_name = 'apache2'
         $ports_path = '/etc/apache2/ports.conf'
+        $ports_template = 'apache/ports.conf.erb'
         $virtualhost_path = '/etc/apache2/sites-available/000-default.conf'
+        $virtualhost_template = 'apache/000-default.conf.erb'
     }
     'windows': {
-
+        $version = '2.4.*'
+        $package_name = 'apache-httpd'
+        $provider = 'chocolatey'
+        $service_name = 'Apache HTTP Server'
+        $ports_path = 'C:/Users/%Username%/AppData/Roaming/Apache24/conf/httpd.conf'
+        $ports_template = 'apache/httpd.conf.erb'
+        $virtualhost_path = 'C:/Users/%Username%/AppData/Roaming/Apache24/conf/httpd.conf'
+        $virtualhost_template = 'apache/httpd.conf.erb'
     }
     'osx': {
 
