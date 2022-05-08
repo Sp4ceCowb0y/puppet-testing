@@ -5,6 +5,7 @@ class apache (
   $version = $apache::params::version,
   $package_name = $apache::params::package_name,
   $provider = $apache::params::provider,
+  $service_name = $apache::params::service_name,
   $ports_path = $apache::params::ports_path,
   $virtualhost_path = $apache::params::virtualhost_path,
 
@@ -18,7 +19,7 @@ class apache (
   }
 
   service { 'apache':
-    name      => 'apache2',
+    name      => $service_name,
     ensure    => running,
     enable    => true,
     subscribe => [File['ports.conf'],File['000-default.conf']],
