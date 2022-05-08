@@ -3,8 +3,8 @@ class apache::params {
   $listen_port = '80'
   $virtualhost_port = '80'
 
-  case $facts['os']['name'] {
-    'Ubuntu': {
+  case $facts['osfamily'] {
+    'Debian': {
         $version = '2.4.*'
         $package_name = 'apache2'
         $provider = 'apt'
