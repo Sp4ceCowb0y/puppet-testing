@@ -9,7 +9,7 @@ class apache (
   $ports_path = $apache::params::ports_path,
   $ports_template = $apache::params::ports_template,
   $virtualhost_path = $apache::params::virtualhost_path,
-  $virtualhost_template = $apache::params::ports_template,
+  $virtualhost_template = $apache::params::virtualhost_template,
 
 ) inherits apache::params
 {
@@ -30,14 +30,14 @@ class apache (
   file { 'ports.conf':
     ensure  => 'file',
     path    => $ports_path,
-    content => template ('$ports_template'),
+    content => template ($ports_template),
     require => Package['apache'],
   }
 
   file { '000-default.conf':
     ensure  => 'file',
     path    => $virtualhost_path,
-    content => template ('$virtualhost_template'),
+    content => template ($virtualhost_template),
     require => Package['apache'],
   }
 
