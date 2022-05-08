@@ -2,8 +2,8 @@ class apache (
 
   $listen_port = $::apache::params::listen_port,
   $virtualhost_port = $::apache::params::virtualhost_port,
-  $version = $::apache::params::version,
   $package_name = $::apache::params::package_name,
+  $version = $::apache::params::version,
   $provider = $::apache::params::provider,
   $ports_path = $::apache::params::ports_path,
   $virtualhost_path = $::apache::params::virtualhost_path
