@@ -8,7 +8,7 @@ class apache (
   $ports_path = $apache::params::ports_path,
   $virtualhost_path = $apache::params::virtualhost_path,
 
-)
+) inherits apache::params
 {
 
   package { 'apache':
