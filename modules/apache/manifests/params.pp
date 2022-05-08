@@ -4,12 +4,12 @@ class apache::params {
   $virtualhost_port = '80'
 
 #  case $facts['osfamily'] {
-  if $osfamily == 'Debian' {
+#  if $osfamily == 'Debian' {
         $version = '2.4.*'
         $package_name = 'apache2'
         $provider = 'apt'
         $ports_path = '/etc/apache2/ports.conf'
         $virtualhost_path = '/etc/apache2/sites-available/000-default.conf'
-    }
+#    }
 #    elsif $osfamily == 'windows' {
 }
